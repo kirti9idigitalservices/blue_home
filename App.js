@@ -1,126 +1,168 @@
-import React, { Component } from 'react';
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
-} from 'react-native';
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+ 
+export default function Login() {
+   const [username, setUsername,] = useState("");
+  const [email, setEmail,] = useState("");
+  const [password, setPassword] = useState("");
+ const [confirm_password, setComfirm_Password] = useState("");
+ const [phone, setPhone] = useState("");
 
-export default class Homepage extends Component {
-
-  render() {
-    return (
-      <View style={styles.container}>
-          <View style={styles.header}>
-          <Image style={styles.avatar} source={require("./assets/user.png")}/>
-          <Text style={styles.name}>Welcome, Rohit</Text>
-          </View>
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              
-             <TouchableOpacity style={styles.buttonContainer}>
-             <Image style={styles.lock} source={require("./assets/user.png")} />
-                <Text style={styles.info}>Profile</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-       <Image style={styles.lock} source={require("./assets/contact-book.png")} />
-                <Text style={styles.info}>Contact</Text> 
-              </TouchableOpacity>
-            </View>
-        </View>
-         <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              
-             <TouchableOpacity style={styles.buttonContainer}>
-    <Image style={styles.lock} source={require("./assets/payment-method.png")} />
-                <Text style={styles.info}>Payment</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-          <Image style={styles.lock} source={require("./assets/settings.png")} />
-                <Text style={styles.info}>Setting</Text> 
-              </TouchableOpacity>
-            </View>
-        </View>
-         <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <TouchableOpacity style={styles.buttonContainer}>
-              <Image style={styles.lock} source={require("./assets/logout.png")} />
-                <Text style={styles.info}>Logout</Text>  
-              </TouchableOpacity>              
-              
-            </View>
-        </View>
+  return (
+    <View style={styles.container}>
+      <Image style={styles.image} source={require("./public/Blue_Logo.png")} />
+ 
+      <StatusBar style="auto" />
+      <View style={styles.inputView}>
+      <Image style={styles.lock} source={require("./public/user.png")} />
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Username"
+          placeholderTextColor="black"
+          onChangeText={(username) => setEmail(username)}
+        />
       </View>
-    );
-  }
-}
 
+       <View style={styles.inputView}>
+      <Image style={styles.lock} source={require("./public/envelope.png")} />
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Email"
+          placeholderTextColor="black"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
+ 
+      <View style={styles.inputView}>
+    
+        <Image style={styles.lock} source={require("./public/padlock.png")} />
+          <TextInput
+          style={styles.TextInput}
+          placeholder="Password"
+          placeholderTextColor="black"
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)}
+        />
+        <Image style={styles.eiew} source={require("./public/private.png")} />
+       </View>
+      
+        <View style={styles.inputView}>
+    
+        <Image style={styles.lock} source={require("./public/padlock.png")} />
+          <TextInput
+          style={styles.TextInput}
+          placeholder="Confirm password"
+          placeholderTextColor="black"
+          secureTextEntry={true}
+          onChangeText={(confirm_password) => setPassword(confirm_password)}
+        />
+        <Image style={styles.eiew1} source={require("./public/private.png")} />
+       </View>
+
+       <View style={styles.inputView}>
+      <Image style={styles.lock} source={require("./public/telephone.png")} />
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Phone"
+          placeholderTextColor="black"
+          onChangeText={(phone) => setEmail(phone)}
+        />
+      </View>
+ 
+ 
+      <TouchableOpacity style={styles.loginBtn}>
+        <Text style={styles.loginText}>Sign Up</Text>
+      </TouchableOpacity>
+
+       
+
+       
+          <Text style={styles.forgotbutton}>Forgot Password</Text>
+    </View>
+  );
+}
+ 
 const styles = StyleSheet.create({
-  header:{
-    backgroundColor: "pink",
-    height:150,
-  },
-  avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 63,
-    borderWidth: 1,
-    borderColor: "blue",
-    marginBottom:10,
-    alignSelf:'left',
-    position: 'absolute',
-    marginTop:30,
-    marginLeft: 30,
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 30,
   },
  
+  image: {
+    marginBottom: 40,
+    width: 200,
+    height: 120,
+  },
+
+  lock:{
+    height:20,
+    width:20,
+    marginTop:8,
+    marginLeft:15,
+  },
+
+  eiew:{
+    height:15,
+    width:20,
+    marginTop:8,
+    marginLeft: 140,
+  },
+
+eiew1:{
+    height:15,
+    width:20,
+    marginTop:8,
+    marginLeft: 70,
+  },
+
+  
  
-  body:{
-    marginTop:10,
-    alignContent: 'coloum',
+  inputView: {
+    backgroundColor: "#ccc",
+    borderRadius: 30,
+    width: "80%",
+    height: 34,
+    marginBottom: 20,
+    flexDirection: 'row',
+    justifiyContent: 'space-between',
+
   
   },
-  bodyContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingLeft:30,
-    paddingRight:30,
+ 
+  TextInput: {
+    height: 35,
+    marginLeft: 5,
   },
-   lock:{
-    height:40,
-    width:40,
-    marginLeft:35,
-    marginTop: 10,
-    backgroundColor: 'whitw',
-    alignItems: 'center',
-  },
-  name:{
-    fontSize:25,
-    color: "blue",
-    fontWeight: "600",
-    marginTop: 90,
-    marginLeft: 30,
-  },
-  info:{
-    fontSize:16,
-    color: "blue",
-    marginTop: 1,
-    marginLeft: 30,
 
-   
+  forgotbutton: {
+    height: 20,
+    marginBottom: 20,
+    backgroundColor: "white",
   },
  
-  buttonContainer: {
-    marginTop: 6,
-    height:80,
-    flexDirection: 'coloum',
-    justifyContent: 'center',
-   // alignItems: 'center',
-    marginBottom:8,
-    borderRadius: 5,
-    width:120,
-    backgroundColor: "yellow",
-   // textAlign: 'coloum'
+  loginBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    backgroundColor: "green",
+  },
+
+  loginText:{
+    color: "white"
   },
 });
